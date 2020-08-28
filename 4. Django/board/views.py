@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
-# Create your views here.
+def main(request):
+
+    return render(request, 'board/main.html')
+
+
+def choice(request):
+
+    return render(request, 'board/choice.html')
+
+def recommend(request):
+
+    return render(request, 'board/recommend.html')

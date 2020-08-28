@@ -1,0 +1,15 @@
+body {
+    background-color: #f7f7ee;    
+}
+nav {
+    background: rgba(247, 247, 238, 0.5);
+
+}
+.baner {
+    background-image: url('../img/bg_2.jpg');
+    height: 35rem;
+}
+.baner_txt {
+    color: black;
+    font: bold;
+}
