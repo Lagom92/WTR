@@ -9,84 +9,56 @@
     <h2 class="text-center mt-5"><b>Webtoon list</b></h2>
     <br><br><br>
     <hr>
-
-
     <div class="row border border-dark my-3 justify-content-center">
-        
-        <!-- 카드 반복 -->
-        <div class="card m-3" style="width: 20.5rem;">
-            <img src="{% static 'img/bg_3.jpg' %}" class="card-img-top" alt="wt_img">
+        {% for webtoon in webtoons %}
+        <!-- 카드 -->
+        <div class="card m-3" style="width: 15rem;">
+            <img src="../../../static/img/wt/{{webtoon.wt_id}}.jpg" class="card-img-top" alt="wt_img" id="mainImg">
             <div class="card-body">
                 <p class="card-text">
-                    제목
-                    <br>
-                    작가: 
-                    <br>
-                    줄거리: 
-                    <br>
+                    <strong>{{webtoon.title}}</strong>
+                    <hr>
+                    {{webtoon.summary}}
                 </p>
-                <form action="{% url 'recommend' %}" method="post">
+                <form action="{% url 'recommend' %}" method="post" class="float-right">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary btn-sr">go</button>
+                    <button type="submit" class="btn btn-primary btn-sr">추천 웹툰 보기</button>
                 </form>
             </div>
         </div>
-
-        <!-- 카드 반복 -->
-        <div class="card m-3" style="width: 20.5rem;">
-            <img src="{% static 'img/bg_3.jpg' %}" class="card-img-top" alt="wt_img">
-            <div class="card-body">
-                <p class="card-text">
-                    제목
-                    <br>
-                    작가: 
-                    <br>
-                    줄거리: 
-                    <br>
-                </p>
-                <form action="{% url 'recommend' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary btn-sr">go</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- 카드 반복 -->
-        <div class="card m-3" style="width: 20.5rem;">
-            <img src="{% static 'img/bg_3.jpg' %}" class="card-img-top" alt="wt_img">
-            <div class="card-body">
-                <p class="card-text">
-                    제목
-                    <br>
-                    작가: 
-                    <br>
-                    줄거리: 
-                    <br>
-                </p>
-                <form action="{% url 'recommend' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary btn-sr">go</button>
-                </form>
-            </div>
-        </div>
-
-        
-
-        
-
-        
-
-        
-
-        
-
-
-
-
-
-
-
+        {% endfor %}
     </div>  
+
+    <!--pagination-->
+    <nav aria-label="Page navigation example">
+        <ul class="d-flex justify-content-center my-4">
+            <h5>Page {{ webtoons.number }} of {{ webtoons.paginator.num_pages }}.</h5>
+        </ul>
+        <ul class="pagination justify-content-center text-dark">
+        {% if webtoons.has_previous %}
+            <li class="page-item">
+              <a class="page-link text-dark" href="?page={{ webtoons.previous_page_number }}">previous</a>
+            </li>
+        {% endif %}
+            <li class="page-item"><a class="page-link text-dark" href="?page=1">1</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=2">2</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=3">3</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=4">4</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=5">5</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=6">6</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=7">7</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=8">8</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=9">9</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=10">10</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=11">11</a></li>
+        {% if movies.has_next %}
+            <li class="page-item">
+              <a class="page-link text-dark" href="?page={{ webtoons.next_page_number }}">Next</a>
+            </li>    
+        {% endif %}
+        </ul>
+    </nav>
+
 </div>
     
 {% endblock %}
