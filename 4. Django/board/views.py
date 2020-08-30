@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from .models import Webtoon
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from predict import predict_func
+
 
 def main(request):
     
@@ -26,5 +28,24 @@ def choice(request):
 
 
 def recommend(request):
+    wt_id = request.POST['wt_id']
+    recommend_list = predict_func(wt_id)
 
-    return render(request, 'board/recommend.html')
+    if recommend_list:
+        wt_data1 = Webtoon.objects.get(wt_id=recommend_list[0])
+        wt_data2 = Webtoon.objects.get(wt_id=recommend_list[1])
+        wt_data3 = Webtoon.objects.get(wt_id=recommend_list[2])
+
+        context = {
+            'have_data': True,
+            'wt_data1': wt_data1,
+            'wt_data2': wt_data2,
+            'wt_data3': wt_data3,
+        }
+    else:
+        context = {
+            'have_data': False
+
+        }
+
+    return render(request, 'board/recommend.html', context)

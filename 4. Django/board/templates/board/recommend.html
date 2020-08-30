@@ -10,69 +10,76 @@
     <br><br><br>
     <hr>
 
-
     <div class="row border border-dark my-3 justify-content-center">
-        
-        <!-- 카드 반복 -->
-        <div class="card m-3" style="width: 20.5rem;">
-            <img src="{% static 'img/bg_3.jpg' %}" class="card-img-top" alt="wt_img" id="mainImg">
-            <div class="card-body">
-                <p class="card-text">
-                    제목
-                    <hr>
-                    줄거리
+    {% if have_data %}
+
+    <!-- 카드 반복 -->
+    <div class="card m-3" style="width: 20.5rem;">
+        <img src="../../../static/img/wt/{{wt_data1.wt_id}}.jpg" class="card-img-top" alt="wt_img" id="mainImg">
+        <div class="card-body">
+            <p class="card-text">
+                <h3>{{wt_data1.title}}</h3>
+                <span>{{wt_data1.writer}} |</span>
+                <span>{{wt_data1.genre}} |</span>
+                <span>{{wt_data1.score}}</span>
+                <hr>
+                <p>
+                    {{wt_data1.summary}}
+                </p>
+                <div class="float-right">
+                    <a class="btn btn-primary" href="{{wt_data1.link}}" role="button" target="_blank">첫화 보러가기</a>
+                </div>
+            </p>
+            
+        </div>
+    </div>
+    
+    <div class="card m-3" style="width: 20.5rem;">
+        <img src="../../../static/img/wt/{{wt_data2.wt_id}}.jpg" class="card-img-top" alt="wt_img" id="mainImg">
+        <div class="card-body">
+            <p class="card-text">
+                <h3>{{wt_data2.title}}</h3>
+                <span>{{wt_data2.writer}} |</span>
+                <span>{{wt_data2.genre}} |</span>
+                <span>{{wt_data2.score}}</span>
+                <hr>
+                <p>
+                    {{wt_data2.summary}}
+                    </p>
+                    <div class="float-right">
+                        <a class="btn btn-primary" href="{{wt_data2.link}}" role="button" target="_blank">첫화 보러가기</a>
+                    </div>
                 </p>
                 
             </div>
         </div>
 
-        <!-- 카드 반복 -->
         <div class="card m-3" style="width: 20.5rem;">
-            <img src="{% static 'img/bg_3.jpg' %}" class="card-img-top" alt="wt_img" id="mainImg">
+            <img src="../../../static/img/wt/{{wt_data3.wt_id}}.jpg" class="card-img-top" alt="wt_img" id="mainImg">
             <div class="card-body">
                 <p class="card-text">
-                    제목
+                    <h3>{{wt_data3.title}}</h3>
+                    <span>{{wt_data3.writer}} |</span>
+                    <span>{{wt_data3.genre}} |</span>
+                    <span>{{wt_data3.score}}</span>
                     <hr>
-                    줄거리
+                    <p>
+                        {{wt_data3.summary}}
+                    </p>
+                    <div class="float-right">
+                        <a class="btn btn-primary" href="{{wt_data3.link}}" role="button" target="_blank">첫화 보러가기</a>
+                    </div>
                 </p>
                 
             </div>
         </div>
-
-        <!-- 카드 반복 -->
-        <div class="card m-3" style="width: 20.5rem;">
-            <img src="{% static 'img/bg_3.jpg' %}" class="card-img-top" alt="wt_img" id="mainImg">
-            <div class="card-body">
-                <p class="card-text">
-                    제목
-                    <hr>
-                    줄거리
-                </p>
-                
-            </div>
-        </div>
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-
-
-
-
-
-
+    
     </div>  
+    {% else %}
+
+    <h3>추천하는 웹툰이 없습니다. 다른 웹툰을 선택해주세요.</h3>
+    
+    {% endif %}
 </div>
     
 {% endblock %}

@@ -7,7 +7,7 @@ django.setup()
 
 from board.models import Webtoon
 
-hand = open('./static/csv_data/webtoon_detail.csv', encoding='UTF8')
+hand = open('./static/csv_data/webtoon_info.csv', encoding='UTF8')
 reader = csv.reader(hand)
 
 bulk_list = []
@@ -22,8 +22,6 @@ for row in reader:
         link = row[6],
     ))
 
-print("bulk list: ", bulk_list)
-
 Webtoon.objects.bulk_create(bulk_list)
 
-print(Webtoon.objects.values())
+print("Complete !!")
